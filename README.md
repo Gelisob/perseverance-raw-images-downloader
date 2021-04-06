@@ -7,6 +7,7 @@ Small Python script that lets you download the Raw Images from Mars 2020 Perseve
 - Downloads both the Full and Thumbnail Images into separate folders.
 - easy to use!
 - Stores a list of the last downloaded images and skips them in the next run.
+- Detailed output of the progress in the Terminal.
 
 
 ## Requirements
@@ -16,7 +17,7 @@ Small Python script that lets you download the Raw Images from Mars 2020 Perseve
 
 
 ## How to Install and use it
-(Tested on Ubuntu 20.04 and Manjaro 21.0, should work on other systems as well as long as you have the Requirements installed!)
+(Tested on Ubuntu 20.04 and Manjaro 21.0)
 
 Step 1: Download or Clone the GitHub repository
 
