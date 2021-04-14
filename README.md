@@ -5,8 +5,7 @@ Small Python script that lets you download the Raw Images from Mars 2020 Perseve
 ## Features
 
 - Downloads both the Full and Thumbnail Images into separate folders.
-- easy to use!
-- Stores a list of the last downloaded images and skips them in the next run.
+- Keeps a list of the last downloaded images and skips them in the next run.
 - Detailed output of the progress in the Terminal.
 
 
