@@ -12,9 +12,10 @@ from httpx import AsyncClient
 url = "https://mars.nasa.gov/rss/api/"
 params = {
     "feed": "raw_images",
-    "category": "mars2020",
+    "category": "mars2020,ingenuity",
     "feedtype": "json",
     "order": "sol desc",
+    "ver": "1.2",
 }
 page_size = 100
 max_parallel = 16
@@ -79,7 +80,7 @@ def read_db():
 
 
 async def main():
-    async with AsyncClient() as client:
+    async with AsyncClient(timeout=10) as client:
         if (db := read_db()) is None:
             r = await client.get(url, params={**params, "num": 0})
             info = r.json()
