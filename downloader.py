@@ -6,6 +6,7 @@ from glob import glob
 from pathlib import Path
 from sys import stderr
 
+
 import httpx
 from httpx import AsyncClient
 
@@ -35,7 +36,7 @@ async def getDb(start: int, client: AsyncClient, sem: BoundedSemaphore):
 
 
 async def getImage(
-    result: dict, client: AsyncClient, sem: BoundedSemaphore, index: int, total: int
+        result: dict, client: AsyncClient, sem: BoundedSemaphore, index: int, total: int
 ):
     async with sem:
         print(f"starting getImage {index:6} /{total:6}", file=stderr)
@@ -60,15 +61,19 @@ async def getImage(
 
 
 def write_db(db):
-    with open(f"db_{datetime.now().isoformat()}.json", "w") as f:
+    failinimi = f"db_{datetime.now().isoformat()}.json"
+    failinimi_parandatud = failinimi.replace(":",",")
+    with open(failinimi_parandatud, "w") as f:
         json.dump(db, f)
 
 
 def read_db():
+
     cur_date = datetime.now()
     for filename in sorted(glob("db_*.json"), reverse=True):
         try:
-            file_date = datetime.fromisoformat(filename[3:-5])
+            filename_fixed = filename.replace(",",":")
+            file_date = datetime.fromisoformat(filename_fixed[3:-5])
             if cur_date - file_date <= max_db_age:
                 with open(filename) as f:
                     return json.load(f)
